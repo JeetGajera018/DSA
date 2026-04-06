@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-Wextra",
+        "-g3",
+        "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "run",
+      "type": "shell",
+      "command": "${fileDirname}\\${fileBasenameNoExtension}.exe"
+    },
+    {
+      "label": "run with input/output file",
+      "type": "shell",
+      "command": "g++ -std=c++17 -Wall -Wextra -g3 \"${file}\" -o \"${fileDirname}\\${fileBasenameNoExtension}.exe\"; if ($?) { Get-Content \"${fileDirname}\\input.txt\" | & \"${fileDirname}\\${fileBasenameNoExtension}.exe\" | Out-File \"${fileDirname}\\output.txt\"; Write-Host '✅ Output saved to output.txt'; Read-Host 'Press Enter to exit' }",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
