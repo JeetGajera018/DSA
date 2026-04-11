@@ -119,7 +119,39 @@ void merge_sort(vector<int> &a, int low, int high)
 // time complexity =N logN
 // space complexity=0(1)
 // steps=> pick a pivot(pivot can be any element by your choise)
+// place the pivot in its correct place in the sorted array
 
+// smaller on the left and larger on the right
+int f(vector<int> &a, int low, int high)
+{
+    int pivot = a[low];
+    int i = low;
+    int j = high;
+    while (i < j)
+    {
+        while (a[i] <= pivot && i <= high)
+        {
+            i++;
+        }
+        while (a[j] > pivot && j >= low)
+        {
+            j--;
+        }
+        if (i < j)
+            swap(a[i], a[j]);
+    }
+    swap(a[low], a[j]);
+    return j;
+}
+void quick_sort(vector<int> &a, int low, int high)
+{
+    if (low < high)
+    {
+        int partition = f(a, low, high);
+        quick_sort(a, low, partition - 1);
+        quick_sort(a, partition + 1, high);
+    }
+}
 int main()
 {
     int n;
@@ -136,7 +168,9 @@ int main()
     //     cout << a[i] << " ";
     // }
 
-    merge_sort(a, 0, n - 1);
+    // merge_sort(a, 0, n - 1);
+    quick_sort(a, 0, n - 1);
+
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";
