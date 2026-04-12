@@ -159,7 +159,7 @@ void unionOfArray(int a[], int b[], int n, int n2)
                 unionArr.push_back(a[i]);
             }
             i++;
-                }
+        }
         else
         {
             if (unionArr.size() == 0 || unionArr.back() != b[j])
@@ -186,6 +186,40 @@ void unionOfArray(int a[], int b[], int n, int n2)
         j++;
     }
     for (auto it : unionArr)
+    {
+        cout << it << " ";
+    }
+}
+
+void InterSectionOfArray(int a[], int b[], int n, int n2)
+{
+
+    vector<int> intersectionArr;
+    int i = 0;
+    int j = 0;
+
+    while (i < n && j < n2)
+    {
+        if (a[i] < b[j])
+        {
+            i++;
+        }
+        else if (a[i] > b[j])
+        {
+            j++;
+        }
+        else
+        {
+            if (intersectionArr.size() == 0 || intersectionArr.back() != a[i])
+            {
+                intersectionArr.push_back(a[i]);
+            }
+            i++;
+            j++;
+        }
+    }
+
+    for (auto it : intersectionArr)
     {
         cout << it << " ";
     }
@@ -231,5 +265,6 @@ int main()
     //     cout << a[i] << " ";
     // }
 
-    unionOfArray(a, b, n, n2);
+    // unionOfArray(a, b, n, n2);
+    InterSectionOfArray(a, b, n, n2);
 }
