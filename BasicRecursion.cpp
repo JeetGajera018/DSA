@@ -68,7 +68,6 @@ using namespace std;
 //         parameterisedSum(i-1,sum+i);
 //     }
 // }
-
 // Method-2 Functional recursion
 // int FunctionalRecursionSum(int n)
 // {
@@ -81,6 +80,7 @@ using namespace std;
 //         return n + FunctionalRecursionSum(n - 1);
 //     }
 // }
+
 // factorial of N using Functional recursion
 // int factorial(int n)
 // {
@@ -95,7 +95,6 @@ using namespace std;
 // }
 
 // reverse an array using the recursion
-
 // void reverseArray1(int a[], int l, int r)
 // {
 //     if (l >= r)
@@ -108,7 +107,6 @@ using namespace std;
 //         reverseArray1(a, l + 1, r - 1);
 //     }
 // }
-
 // void reverseArray2(int a[], int i,int n)
 // {
 //     if (i >= n/2)
@@ -133,18 +131,13 @@ using namespace std;
 //     return Palindrome(i + 1, s);
 // }
 
-
 //  Fibonacci Number
-int Fibonacci(int n){
-    if(n<=1) return n;
-    int last=Fibonacci(n-1);
-    int last_second=Fibonacci(n-2);
-    return last + last_second;
-}
-
-
-
-
+// int Fibonacci(int n){
+//     if(n<=1) return n;
+//     int last=Fibonacci(n-1);
+//     int last_second=Fibonacci(n-2);
+//     return last + last_second;
+// }
 
 int main()
 {
@@ -185,7 +178,7 @@ int main()
     // string s = "jeet";
     // cout << Palindrome(0, s);
 
-    int n;
-    cin>>n;
-    cout<<Fibonacci(n);
+    // int n;
+    // cin>>n;
+    // cout<<Fibonacci(n);
 }

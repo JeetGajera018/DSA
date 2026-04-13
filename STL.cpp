@@ -296,7 +296,7 @@ bool comp(pair<int, int> p1, pair<int, int> p2)
     else
         return false;
 }
-
+// sorting algorithms
 void sorting()
 {
     int a[] = {3, 2, 1, 5, 4, 6};
@@ -351,6 +351,7 @@ void sorting()
     cout << max << endl;
 }
 
+// for the output
 int main()
 {
     sorting();
