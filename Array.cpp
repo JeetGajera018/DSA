@@ -225,6 +225,52 @@ void InterSectionOfArray(int a[], int b[], int n, int n2)
     }
 }
 
+// find missing number
+int missingNumber(int a[], int n)
+{
+    int xor1 = 0;
+    int xor2 = 0;
+    for (int i = 0; i < n - 1; i++)
+    {
+        xor1 = xor1 ^ (i + 1);
+        xor2 = xor2 ^ a[i];
+    }
+
+    xor1 ^= n;
+    return xor1 ^ xor2;
+}
+
+// Maximum Consecutive Ones
+int MaximumConsecutiveOnes(int a[], int n)
+{
+    int maxi = 0;
+    int cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] == 1)
+        {
+            cnt++;
+            maxi = max(maxi, cnt);
+        }
+        else
+        {
+            cnt = 0;
+        }
+    }
+    return maxi;
+}
+
+// Find the number that appears once, and other numbers twice.
+int numberAppearsOnce(int a[], int n)
+{
+    int xor1 = 0;
+    for (int i = 0; i < n; i++)
+    {
+        xor1 ^= a[i];
+    }
+    return xor1;
+}
+
 int main()
 {
     int n;
@@ -234,13 +280,13 @@ int main()
     {
         cin >> a[i];
     }
-    int n2;
-    cin >> n2;
-    int b[n2];
-    for (int i = 0; i < n2; i++)
-    {
-        cin >> b[i];
-    }
+    // int n2;
+    // cin >> n2;
+    // int b[n2];
+    // for (int i = 0; i < n2; i++)
+    // {
+    //     cin >> b[i];
+    // }
 
     // number of rotate
     // int d;
@@ -266,5 +312,11 @@ int main()
     // }
 
     // unionOfArray(a, b, n, n2);
-    InterSectionOfArray(a, b, n, n2);
+    // InterSectionOfArray(a, b, n, n2);
+    // int missingNum = missingNumber(a, n);
+    // cout << missingNum;
+    // int maxcont = MaximumConsecutiveOnes(a, n);
+    // cout << maxcont;
+    int numberappears = numberAppearsOnce(a, n);
+    cout << numberappears;
 }
