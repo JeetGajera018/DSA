@@ -271,6 +271,58 @@ int numberAppearsOnce(int a[], int n)
     return xor1;
 }
 
+// Longest subarray with given sum K(positives)
+int longestsubarray(int a[], int n, int k)
+{
+    long long sum = 0;
+    int maxlen = 0;
+    map<long long, int> presummap;
+    for (int i = 0; i < n; i++)
+    {
+        sum += a[i];
+        if (sum == k)
+        {
+            maxlen = max(maxlen, i + 1);
+        }
+        long long rem = sum - k;
+        if (presummap.find(rem) != presummap.end())
+        {
+            int len = i - presummap[rem];
+            maxlen = max(maxlen, len);
+        }
+        if (presummap.find(sum) == presummap.end())
+        {
+            presummap[sum] = i;
+        }
+    }
+    return maxlen;
+}
+
+int longestsubarray2(int a[], int n, int k)
+{
+    long long sum = a[0];
+    int maxlen = 0;
+    int left = 0;
+    int right = 0;
+    while (right < n)
+    {
+        while (left <= right && sum > k)
+        {
+            sum -= a[left];
+            left++;
+        }
+        if (sum == k)
+        {
+            maxlen = max(maxlen, right - left + 1);
+        }
+        right++;
+        if (right < n)
+        {
+            sum += a[right];
+        }
+    }
+    return maxlen;
+}
 int main()
 {
     int n;
@@ -317,6 +369,12 @@ int main()
     // cout << missingNum;
     // int maxcont = MaximumConsecutiveOnes(a, n);
     // cout << maxcont;
-    int numberappears = numberAppearsOnce(a, n);
-    cout << numberappears;
+    // int numberappears = numberAppearsOnce(a, n);
+    // cout << numberappears;
+    int k;
+    cin >> k;
+    // int lengthh = longestsubarray(a, n, k);
+    // cout << lengthh;
+    int lengthh = longestsubarray2(a, n, k);
+    cout << lengthh;
 }
